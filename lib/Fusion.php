@@ -1,5 +1,7 @@
 <?php
 
+use Fusion\AssetCollection;
+
 // Traits
 require_once __DIR__ . '/Fusion.Asset.HasDependencies.php';
 
@@ -51,6 +53,40 @@ class Fusion {
 
         return self::$pool[$key] = new $class($path, $baseDir);
 
+    }
+
+    public static function glob($globs, $baseDir) {
+        if(!is_array($globs)) {
+            $globs = [$globs];
+        }
+
+        $collection = new AssetCollection();
+
+        $baseDir = realpath(rtrim($baseDir, DIRECTORY_SEPARATOR));
+
+        if(is_dir($baseDir)) {
+            $baseDirLength = strlen($baseDir) + 1;
+            foreach($globs as $glob) {
+                $glob = $baseDir . DIRECTORY_SEPARATOR . ltrim($glob, '/');
+                foreach(glob($glob) as $absolutePath) {
+                        if(is_file($absolutePath)) {
+                        $path = substr($absolutePath, $baseDirLength);
+                        $file = self::file($path, $baseDir);
+                        foreach($file->dependencies() as $d) {
+                            $collection[] = $d;
+                        }
+                        $collection[] = $file;
+                    }
+                }
+            }
+        }
+
+        return $collection;
+
+    }
+
+    public static function clearPool() {
+        self::$pool = [];
     }
 
 }

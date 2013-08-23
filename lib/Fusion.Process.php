@@ -15,10 +15,10 @@ class Process {
     public static function __callStatic($name, $args) {
 
         $bin = isset(self::$paths[$name]) ? self::$paths[$name] : $name;
-        $bin = trim(`which $bin`);
+        $binPath = trim(`which $bin`);
 
-        if(!is_executable($bin)) {
-            throw new Exceptions\BadInterpreter($bin);
+        if(!is_executable($binPath)) {
+            throw new Exceptions\BadInterpreter($name, $binPath ?: $bin);
         }
 
         $shellArgs = isset($args[0]) ? $args[0] : [];
@@ -30,7 +30,7 @@ class Process {
             ['pipe', 'w']
         ];
 
-        $cmd = $bin . ' ' . implode(' ', array_map('escapeshellarg', $shellArgs));
+        $cmd = $binPath . ' ' . implode(' ', array_map('escapeshellarg', $shellArgs));
 
         $proc = proc_open($cmd, $desc, $pipes);
 

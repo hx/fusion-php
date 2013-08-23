@@ -12,7 +12,13 @@ class CircularDependency extends Base {
 }
 
 class BadInterpreter extends Base {
-    public function __construct($name) {
-        parent::__construct("Could not execute $name.");
+    public function __construct($processor, $name) {
+        parent::__construct("Could not execute $processor at $name.");
+    }
+}
+
+class MixedTypes extends Base {
+    public function __construct($required, $found) {
+        parent::__construct("Found an instance of $found in a collection of $required.");
     }
 }
