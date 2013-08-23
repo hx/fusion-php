@@ -1,0 +1,57 @@
+<?php
+
+namespace Fusion;
+use Fusion\Exceptions;
+
+/**
+ * @method static string uglifyjs(array $args = [], $stdin = null)
+ * @method static string coffee(array $args = [], $stdin = null)
+ * @method static string sass(array $args = [], $stdin = null)
+ */
+class Process {
+
+    public static $paths = [];
+
+    public static function __callStatic($name, $args) {
+
+        $bin = isset(self::$paths[$name]) ? self::$paths[$name] : $name;
+        $bin = trim(`which $bin`);
+
+        if(!is_executable($bin)) {
+            throw new Exceptions\BadInterpreter($bin);
+        }
+
+        $shellArgs = isset($args[0]) ? $args[0] : [];
+        $stdin = isset($args[1]) ? $args[1] : null;
+
+        $desc = [
+            ['pipe', 'r'],
+            ['pipe', 'w'],
+            ['pipe', 'w']
+        ];
+
+        $cmd = $bin . ' ' . implode(' ', array_map('escapeshellarg', $shellArgs));
+
+        $proc = proc_open($cmd, $desc, $pipes);
+
+        foreach($pipes as $pipe) {
+//            stream_set_blocking($pipe, 0);
+        }
+
+        if($stdin !== null) {
+            fwrite($pipes[0], $stdin);
+        }
+
+        fclose($pipes[0]);
+
+        $ret = stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+
+        proc_close($proc);
+
+        return $ret;
+
+    }
+
+}
