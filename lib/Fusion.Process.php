@@ -34,10 +34,6 @@ class Process {
 
         $proc = proc_open($cmd, $desc, $pipes);
 
-        foreach($pipes as $pipe) {
-//            stream_set_blocking($pipe, 0);
-        }
-
         if($stdin !== null) {
             fwrite($pipes[0], $stdin);
         }
