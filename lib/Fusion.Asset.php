@@ -2,6 +2,8 @@
 
 namespace Fusion;
 
+use Fusion\Asset\DependenciesAndSelf;
+
 interface IAsset {
     /**
      * @return bool
@@ -22,6 +24,11 @@ interface IAsset {
      * @return string
      */
     public function compressed();
+
+    /**
+     * @return AssetCollection
+     */
+    public function dependencies();
 }
 
 class Asset implements IAsset {
@@ -32,6 +39,7 @@ class Asset implements IAsset {
     private $raw;
     private $filtered;
     private $compressed;
+    private $dependenciesAndSelf;
 
     /**
      * @param string $path The path of the file to be represented. If no base
@@ -136,5 +144,12 @@ class Asset implements IAsset {
             $this->compressed = $this->compress();
         }
         return $this->compressed;
+    }
+
+    public function dependenciesAndSelf() {
+        if($this->dependenciesAndSelf === null) {
+            $this->dependenciesAndSelf = new DependenciesAndSelf($this);
+        }
+        return $this->dependenciesAndSelf;
     }
 }

@@ -8,7 +8,7 @@ use Fusion\Process;
 class CoffeeScript extends JavaScript {
 
     protected function filter() {
-        return Process::coffee(['-bcs'], parent::filter());
+        return Process::coffee(['-cs'], parent::filter());
     }
 
 }

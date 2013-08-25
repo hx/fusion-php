@@ -68,6 +68,16 @@ class AssetCollection extends \ArrayObject implements IAsset {
         return implode('', $this->map('compressed'));
     }
 
+    public function dependencies() {
+        $collection = new self;
+        foreach($this as $i) {
+            foreach($i->dependencies() as $j) {
+                $collection[] = $j;
+            }
+        }
+        return $collection;
+    }
+
     private function assetType() {
         static $baseTypes = [
             'Fusion\\Asset\\StyleSheet',
