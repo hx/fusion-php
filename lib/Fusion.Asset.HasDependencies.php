@@ -12,6 +12,7 @@ trait HasDependencies {
 
     /**
      * @param null|array $ancestors Used internally to prevent circular dependency
+     * @throws \Fusion\Exceptions\CircularDependency
      * @return AssetCollection
      */
     public function dependencies($ancestors = []) {
@@ -31,7 +32,7 @@ trait HasDependencies {
         }
 
         static $commentPattern = '`^\s*(/\*[\s\S]*?\*/|(\s*(//|#).*(\s+|$))+)`';
-        static $requirePattern = '`^\s*(?:\*|//|#)=\s+(require|require_glob)\s+(.+?)\s*$`';
+        static $requirePattern = '`^\s*(?:\*|//|#)=\s*(require|require_glob)\s+(.+?)\s*$`';
 
         if($this->dependencies === null) {
             $this->dependencies = new AssetCollection;
@@ -54,11 +55,13 @@ trait HasDependencies {
             $ancestorsAndSelf = array_merge($ancestors, [$this]);
             foreach(array_unique($paths) as $i) {
                 $i = realpath($i);
-                $file = Fusion::file(substr($i, $baseDirLength), $this->baseDir());
-                foreach($file->dependencies($ancestorsAndSelf) as $d) {
-                    $this->dependencies[] = $d;
+                if(!is_dir($i)) {
+                    $file = Fusion::file(substr($i, $baseDirLength), $this->baseDir());
+                    foreach($file->dependencies($ancestorsAndSelf) as $d) {
+                        $this->dependencies[] = $d;
+                    }
+                    $this->dependencies[] = $file;
                 }
-                $this->dependencies[] = $file;
             }
         }
 
