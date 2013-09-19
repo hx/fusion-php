@@ -44,7 +44,8 @@ class DependenciesAndSelf implements IAsset, \Iterator, \Countable, \ArrayAccess
             ++$this->cursor;
         }
         else {
-            next($this->dependencies());
+            $dependencies = $this->dependencies();
+            next($dependencies);
         }
     }
 
@@ -61,7 +62,8 @@ class DependenciesAndSelf implements IAsset, \Iterator, \Countable, \ArrayAccess
     }
 
     public function rewind() {
-        reset($this->dependencies());
+        $dependencies = $this->dependencies();
+        reset($dependencies);
         $this->cursor = 0;
     }
 
