@@ -3,6 +3,7 @@
 namespace Fusion\Asset;
 
 use Fusion\Asset;
+use Fusion\Exceptions;
 use Fusion\Process;
 
 class JavaScript extends Asset {
@@ -14,7 +15,11 @@ class JavaScript extends Asset {
     }
 
     protected function compress() {
-        return Process::uglifyjs(['-mc'], parent::compress());
+        try {
+            return Process::uglifyjs(['-mc'], parent::compress());
+        } catch(Exceptions\ProcessFailure $e) {
+            throw new Exceptions\SyntaxError($this, $e->error);
+        }
     }
 
 }

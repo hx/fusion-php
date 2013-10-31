@@ -42,9 +42,15 @@ class Process {
 
         $ret = stream_get_contents($pipes[1]);
         fclose($pipes[1]);
+
+        $error = trim(stream_get_contents($pipes[2]));
         fclose($pipes[2]);
 
-        proc_close($proc);
+        $status = proc_close($proc);
+
+        if($status || $error !== '') {
+            throw new Exceptions\ProcessFailure($status, $error);
+        }
 
         return $ret;
 

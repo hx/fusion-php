@@ -30,9 +30,4 @@ class FusionTest extends Fusion\TestCase {
         $this->assertCount(4, $file->dependencies());
     }
 
-    public function testCircularDependency() {
-        $this->setExpectedException('Fusion\\Exceptions\\CircularDependency');
-        Fusion::file(__DIR__ . '/fixtures/circular/a.js')->dependencies();
-    }
-
 }

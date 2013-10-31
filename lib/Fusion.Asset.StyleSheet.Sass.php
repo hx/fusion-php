@@ -3,6 +3,7 @@
 namespace Fusion\Asset\StyleSheet;
 
 use Fusion\Asset\StyleSheet;
+use Fusion\Exceptions;
 use Fusion\Process;
 
 class Sass extends StyleSheet {
@@ -13,7 +14,11 @@ class Sass extends StyleSheet {
             $args[] = '--scss';
         }
         $args[] = $this->absolutePath();
-        return Process::sass($args);
+        try {
+            return Process::sass($args);
+        } catch(Exceptions\ProcessFailure $e) {
+            throw new Exceptions\SyntaxError($this, $e->error);
+        }
     }
 
 }
