@@ -43,7 +43,7 @@ class ProcessFailure extends Exception {
 
 class SyntaxError extends Exception {
     public function __construct(Asset $asset, $message, $code = null) {
-        $message = sprintf('Error in %s:\n\n%s\n', $asset->path(), $message);
+        $message = sprintf("Error in %s:\n\n%s\n", $asset->path(), $message);
         if($code !== null) {
             $message .= "\n$code\n";
         }
