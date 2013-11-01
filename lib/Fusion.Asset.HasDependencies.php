@@ -46,7 +46,12 @@ trait HasDependencies {
                                 $paths[] = dirname($this->absolutePath()) . DIRECTORY_SEPARATOR . $matches[2];
                                 break;
                             case 'require_glob':
-                                $paths = array_merge($paths, glob(dirname($this->absolutePath()) . DIRECTORY_SEPARATOR . $matches[2]));
+                                $paths = array_merge($paths, array_filter(
+                                    glob(dirname($this->absolutePath()) . DIRECTORY_SEPARATOR . $matches[2], GLOB_MARK),
+                                    function($path) {
+                                        return substr($path, -1) !== '/';
+                                    }
+                                ));
                         }
                     }
                 }
