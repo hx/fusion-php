@@ -39,4 +39,9 @@ class ExceptionTest extends Fusion\TestCase {
         Fusion::file(__DIR__ . '/fixtures/circular/a.js')->dependencies();
     }
 
+    public function testMissingDependency() {
+        $this->setExpectedException('Fusion\\Exceptions\\MissingDependency');
+        Fusion::file(__DIR__ . '/fixtures/bad/missing_dependency.js')->dependenciesAndSelf()->filtered();
+    }
+
 }

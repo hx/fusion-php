@@ -14,6 +14,25 @@ class CircularDependency extends Exception {
     }
 }
 
+class MissingDependency extends Exception {
+
+    /**
+     * @var Asset
+     */
+    public $parent;
+
+    /**
+     * @var string
+     */
+    public $path;
+
+    public function __construct(Asset $parent, $path) {
+        $this->parent = $parent;
+        $this->path = $path;
+        parent::__construct(sprintf('Missing dependency in %s: %s', $parent->path(), $path));
+    }
+}
+
 class BadInterpreter extends Exception {
     public function __construct($processor, $name) {
         parent::__construct("Could not execute $processor at $name.");

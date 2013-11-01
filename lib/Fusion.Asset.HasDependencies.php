@@ -54,13 +54,16 @@ trait HasDependencies {
             $baseDirLength = strlen($this->baseDir()) + 1;
             $ancestorsAndSelf = array_merge($ancestors, [$this]);
             foreach(array_unique($paths) as $i) {
-                $i = realpath($i);
-                if(!is_dir($i)) {
+                if(is_file($i)) {
+                    $i = realpath($i);
                     $file = Fusion::file(substr($i, $baseDirLength), $this->baseDir());
                     foreach($file->dependencies($ancestorsAndSelf) as $d) {
                         $this->dependencies[] = $d;
                     }
                     $this->dependencies[] = $file;
+                }
+                else {
+                    throw new Fusion\Exceptions\MissingDependency($this, substr($i, $baseDirLength));
                 }
             }
         }
