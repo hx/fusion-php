@@ -12,6 +12,7 @@ trait HasDependencies {
 
     /**
      * @param null|array $ancestors Used internally to prevent circular dependency
+     * @throws \Fusion\Exceptions\MissingDependency
      * @throws \Fusion\Exceptions\CircularDependency
      * @return AssetCollection
      */

@@ -1,0 +1,20 @@
+{
+    "name": "hx/fusion-php",
+    "description": "Fusion PHP Asset Pipeline",
+    "license": "Apache License 2.0",
+    "authors": [
+        {
+            "name": "Neil E. Pearson",
+            "email": "neil@helium.net.au"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "Fusion": "src/"
+        }
+    }
+}
