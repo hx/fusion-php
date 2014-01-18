@@ -17,6 +17,13 @@ class FilterTest extends Fusion\TestCase {
         $this->assertLessThan(strlen($file->filtered()), strlen($file->compressed()));
     }
 
+    function testLess() {
+        $file = Fusion::file('style.less', __DIR__ . '/fixtures');
+        $this->assertContains('html body', $file->filtered());
+        $this->assertContains('html body', $file->compressed());
+        $this->assertLessThan(strlen($file->filtered()), strlen($file->compressed()));
+    }
+
     function testCoffee() {
         $file = Fusion::file('simple.coffee', __DIR__ . '/fixtures');
         $this->assertContains('alert(', $file->filtered());

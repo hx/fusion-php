@@ -14,6 +14,7 @@ require_once __DIR__ . '/Fusion/Asset/JavaScript.php';
 require_once __DIR__ . '/Fusion/Asset/StyleSheet.php';
 require_once __DIR__ . '/Fusion/Asset/JavaScript/CoffeeScript.php';
 require_once __DIR__ . '/Fusion/Asset/StyleSheet/Sass.php';
+require_once __DIR__ . '/Fusion/Asset/StyleSheet/Less.php';
 require_once __DIR__ . '/Fusion/AssetCollection.php';
 
 class Fusion {
@@ -22,6 +23,7 @@ class Fusion {
         'css'   => 'StyleSheet',
         'scss'  => 'StyleSheet.Sass',
         'sass'  => 'StyleSheet.Sass',
+        'less'  => 'StyleSheet.Less',
         'js'    => 'JavaScript',
         'coffee'=> 'JavaScript.CoffeeScript'
     ];

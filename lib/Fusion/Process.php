@@ -7,6 +7,7 @@ use Fusion\Exceptions;
  * @method static string uglifyjs(array $args = [], $stdin = null)
  * @method static string coffee(array $args = [], $stdin = null)
  * @method static string sass(array $args = [], $stdin = null)
+ * @method static string lessc(array $args = [], $stdin = null)
  */
 class Process {
 
