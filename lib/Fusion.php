@@ -3,18 +3,18 @@
 use Fusion\AssetCollection;
 
 // Traits
-require_once __DIR__ . '/Fusion.Asset.HasDependencies.php';
+require_once __DIR__ . '/Fusion/Asset/HasDependencies.php';
 
 // Classes
-require_once __DIR__ . '/Fusion.Exceptions.php';
-require_once __DIR__ . '/Fusion.Process.php';
-require_once __DIR__ . '/Fusion.Asset.php';
-require_once __DIR__ . '/Fusion.Asset.DependenciesAndSelf.php';
-require_once __DIR__ . '/Fusion.Asset.JavaScript.php';
-require_once __DIR__ . '/Fusion.Asset.StyleSheet.php';
-require_once __DIR__ . '/Fusion.Asset.JavaScript.CoffeeScript.php';
-require_once __DIR__ . '/Fusion.Asset.StyleSheet.Sass.php';
-require_once __DIR__ . '/Fusion.AssetCollection.php';
+require_once __DIR__ . '/Fusion/Exceptions.php';
+require_once __DIR__ . '/Fusion/Process.php';
+require_once __DIR__ . '/Fusion/Asset.php';
+require_once __DIR__ . '/Fusion/Asset/DependenciesAndSelf.php';
+require_once __DIR__ . '/Fusion/Asset/JavaScript.php';
+require_once __DIR__ . '/Fusion/Asset/StyleSheet.php';
+require_once __DIR__ . '/Fusion/Asset/JavaScript/CoffeeScript.php';
+require_once __DIR__ . '/Fusion/Asset/StyleSheet/Sass.php';
+require_once __DIR__ . '/Fusion/AssetCollection.php';
 
 class Fusion {
 

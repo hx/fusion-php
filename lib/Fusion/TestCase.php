@@ -1,7 +1,7 @@
 <?php
 
 namespace {
-    require_once __DIR__ . '/Fusion.php';
+    require_once __DIR__ . '/../Fusion.php';
 }
 
 namespace Fusion {

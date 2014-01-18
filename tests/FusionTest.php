@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../lib/Fusion.TestCase.php';
+require_once __DIR__ . '/../lib/Fusion/TestCase.php';
 
 class FusionTest extends Fusion\TestCase {
 

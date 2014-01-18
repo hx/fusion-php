@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+// Tell PHPUnit we're using the composer version so it doesn't
+// go hunting far and wide for autoload files. The vendor/bin/phpunit
+// file fails because it's missing this line.
+define('PHPUNIT_COMPOSER_INSTALL', 1);
+
+// Include composer's autoloader
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Run the PHPUnit stack
+PHPUnit_TextUI_Command::main();
