@@ -22,6 +22,7 @@ class FilterTest extends Fusion\TestCase {
         $this->assertContains('html body', $file->filtered());
         $this->assertContains('html body', $file->compressed());
         $this->assertLessThan(strlen($file->filtered()), strlen($file->compressed()));
+        $this->assertNotContains('@charset', $file->filtered());
     }
 
     function testCoffee() {
