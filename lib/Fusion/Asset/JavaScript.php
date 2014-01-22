@@ -22,4 +22,8 @@ class JavaScript extends Asset {
         }
     }
 
+    public function contentType() {
+        return 'application/javascript';
+    }
+
 }

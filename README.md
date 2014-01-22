@@ -58,6 +58,9 @@ echo $file->basePath();
 
 // The file's absolute path (base + path)
 echo $file->absolutePath();
+
+// The file's content type (in this case, "text/css")
+echo $file->contentType();
 ```
 
 You can get the raw, filtered (processed), and compressed (minified) document strings:

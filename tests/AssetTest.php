@@ -13,6 +13,7 @@ class AssetTest extends Fusion\TestCase {
         $this->assertSame($file->dependencies()[1], $all[1]);
         $this->assertContains('have dependencies', $all->compressed());
         $this->assertContains('we got there', $all->raw());
+        $this->assertSame('application/javascript', $file->contentType());
     }
 
 }

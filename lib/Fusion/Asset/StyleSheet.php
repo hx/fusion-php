@@ -19,4 +19,8 @@ class StyleSheet extends Asset {
         }
     }
 
+    public function contentType() {
+        return 'text/css';
+    }
+
 }

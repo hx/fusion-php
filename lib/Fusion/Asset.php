@@ -152,4 +152,11 @@ class Asset implements IAsset {
         }
         return $this->dependenciesAndSelf;
     }
+
+    /**
+     * @return string
+     */
+    public function contentType() {
+        return 'application/octet-stream';
+    }
 }
