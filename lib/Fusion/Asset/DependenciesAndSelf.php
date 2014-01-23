@@ -1,10 +1,10 @@
 <?php
 
-namespace Fusion\Asset;
+namespace Hx\Fusion\Asset;
 
-use Fusion\Asset;
-use Fusion\IAsset;
-use Fusion\AssetCollection;
+use Hx\Fusion\Asset;
+use Hx\Fusion\IAsset;
+use Hx\Fusion\AssetCollection;
 
 class DependenciesAndSelf implements IAsset, \Iterator, \Countable, \ArrayAccess {
 

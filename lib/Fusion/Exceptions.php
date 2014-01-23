@@ -1,11 +1,11 @@
 <?php
 
-namespace Fusion { class Exception extends \Exception {}}
+namespace Hx\Fusion { class Exception extends \Exception {}}
 
-namespace Fusion\Exceptions {
+namespace Hx\Fusion\Exceptions {
 
-use Fusion\Asset;
-use Fusion\Exception;
+use Hx\Fusion\Asset;
+use Hx\Fusion\Exception;
 
 class CircularDependency extends Exception {
     public function __construct(array $hierarchy) {

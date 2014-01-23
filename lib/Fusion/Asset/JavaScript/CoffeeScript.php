@@ -1,10 +1,10 @@
 <?php
 
-namespace Fusion\Asset\JavaScript;
+namespace Hx\Fusion\Asset\JavaScript;
 
-use Fusion\Asset\JavaScript;
-use Fusion\Exceptions;
-use Fusion\Process;
+use Hx\Fusion\Asset\JavaScript;
+use Hx\Fusion\Exceptions;
+use Hx\Fusion\Process;
 
 class CoffeeScript extends JavaScript {
 

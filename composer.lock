@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "12dbdf443379c852363f2f9af367407c",
+    "hash": "83a48ed489466732556d2193fa7292c6",
     "packages": [
 
     ],
@@ -14,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "3afa36d224aeee84c1b57c837b7c2a5c88736639"
+                "reference": "ce9ec3b5ef9cc4d4d83d5d1bd93f3e8dfb19879e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3afa36d224aeee84c1b57c837b7c2a5c88736639",
-                "reference": "3afa36d224aeee84c1b57c837b7c2a5c88736639",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ce9ec3b5ef9cc4d4d83d5d1bd93f3e8dfb19879e",
+                "reference": "ce9ec3b5ef9cc4d4d83d5d1bd93f3e8dfb19879e",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-01-17 15:25:41"
+            "time": "2014-01-18 05:55:23"
         },
         {
             "name": "phpunit/php-file-iterator",

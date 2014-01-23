@@ -1,10 +1,10 @@
 <?php
 
-namespace Fusion\Asset;
+namespace Hx\Fusion\Asset;
 
-use Fusion;
-use Fusion\AssetCollection;
-use Fusion\Exceptions;
+use Hx\Fusion;
+use Hx\Fusion\AssetCollection;
+use Hx\Fusion\Exceptions;
 
 trait HasDependencies {
 

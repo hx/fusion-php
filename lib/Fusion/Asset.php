@@ -1,8 +1,8 @@
 <?php
 
-namespace Fusion;
+namespace Hx\Fusion;
 
-use Fusion\Asset\DependenciesAndSelf;
+use Hx\Fusion\Asset\DependenciesAndSelf;
 
 interface IAsset {
     /**

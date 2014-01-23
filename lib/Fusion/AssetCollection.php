@@ -1,9 +1,9 @@
 <?php
 
-namespace Fusion;
+namespace Hx\Fusion;
 
-use Fusion\Asset;
-use Fusion\Exceptions;
+use Hx\Fusion\Asset;
+use Hx\Fusion\Exceptions;
 
 class AssetCollection extends \ArrayObject implements IAsset {
 
@@ -80,8 +80,8 @@ class AssetCollection extends \ArrayObject implements IAsset {
 
     private function assetType() {
         static $baseTypes = [
-            'Fusion\\Asset\\StyleSheet',
-            'Fusion\\Asset\\JavaScript',
+            'Hx\\Fusion\\Asset\\StyleSheet',
+            'Hx\\Fusion\\Asset\\JavaScript',
         ];
         if($this->assetType === null && $this->count()) {
             foreach($baseTypes as $i) {

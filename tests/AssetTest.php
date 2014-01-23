@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../lib/Fusion/TestCase.php';
 
+use Hx\Fusion;
+
 class AssetTest extends Fusion\TestCase {
 
     public function testDependenciesAndSelf() {

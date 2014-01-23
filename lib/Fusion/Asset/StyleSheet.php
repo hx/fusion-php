@@ -1,10 +1,10 @@
 <?php
 
-namespace Fusion\Asset;
+namespace Hx\Fusion\Asset;
 
-use Fusion\Asset;
-use Fusion\Exceptions;
-use Fusion\Process;
+use Hx\Fusion\Asset;
+use Hx\Fusion\Exceptions;
+use Hx\Fusion\Process;
 
 class StyleSheet extends Asset {
 

@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../lib/Fusion/TestCase.php';
 
+use Hx\Fusion;
+
 class AssetCollectionTest extends Fusion\TestCase {
 
     public function testGlob() {
@@ -16,7 +18,7 @@ class AssetCollectionTest extends Fusion\TestCase {
     }
 
     public function testTypeMismatch() {
-        $this->setExpectedException('Fusion\\Exceptions\\MixedTypes');
+        $this->setExpectedException('Hx\\Fusion\\Exceptions\\MixedTypes');
         $glob = Fusion::glob('*', __DIR__ . '/fixtures');
         $glob->raw();
     }

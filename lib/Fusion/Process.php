@@ -1,7 +1,7 @@
 <?php
 
-namespace Fusion;
-use Fusion\Exceptions;
+namespace Hx\Fusion;
+use Hx\Fusion\Exceptions;
 
 /**
  * @method static string uglifyjs(array $args = [], $stdin = null)

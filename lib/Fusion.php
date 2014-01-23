@@ -1,6 +1,8 @@
 <?php
 
-use Fusion\AssetCollection;
+namespace Hx;
+
+use Hx\Fusion\AssetCollection;
 
 // Traits
 require_once __DIR__ . '/Fusion/Asset/HasDependencies.php';
@@ -45,12 +47,12 @@ class Fusion {
             return self::$pool[$key];
         }
 
-        $class = 'Fusion\\Asset';
+        $class = 'Hx\\Fusion\\Asset';
 
         if(preg_match('`\.([^./\\\\]+)$`', $path, $m)) {
             $extension = strtolower($m[1]);
             if(isset(self::$types[$extension])) {
-                $class = 'Fusion\\Asset\\' . str_replace('.', '\\', self::$types[$extension]);
+                $class = 'Hx\\Fusion\\Asset\\' . str_replace('.', '\\', self::$types[$extension]);
             }
         }
 

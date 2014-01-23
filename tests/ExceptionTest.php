@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../lib/Fusion/TestCase.php';
 
+use Hx\Fusion;
+
 class ExceptionTest extends Fusion\TestCase {
 
     public function tearDown() {
@@ -15,7 +17,7 @@ class ExceptionTest extends Fusion\TestCase {
         Fusion\Process::$paths = [
             $bin   => './asdfghjkl'
         ];
-        $this->setExpectedException('Fusion\\Exceptions\\BadInterpreter');
+        $this->setExpectedException('Hx\\Fusion\\Exceptions\\BadInterpreter');
         Fusion::file(__DIR__ . "/fixtures/bad/bad.$bin")->filtered();
     }
 
@@ -23,7 +25,7 @@ class ExceptionTest extends Fusion\TestCase {
      * @dataProvider processors
      */
     public function testBadSyntax($type) {
-        $this->setExpectedException('Fusion\\Exceptions\\SyntaxError');
+        $this->setExpectedException('Hx\\Fusion\\Exceptions\\SyntaxError');
         Fusion::file(__DIR__ . "/fixtures/bad/bad.$type")->filtered();
     }
 
@@ -35,12 +37,12 @@ class ExceptionTest extends Fusion\TestCase {
     }
 
     public function testCircularDependency() {
-        $this->setExpectedException('Fusion\\Exceptions\\CircularDependency');
+        $this->setExpectedException('Hx\\Fusion\\Exceptions\\CircularDependency');
         Fusion::file(__DIR__ . '/fixtures/circular/a.js')->dependencies();
     }
 
     public function testMissingDependency() {
-        $this->setExpectedException('Fusion\\Exceptions\\MissingDependency');
+        $this->setExpectedException('Hx\\Fusion\\Exceptions\\MissingDependency');
         Fusion::file(__DIR__ . '/fixtures/bad/missing_dependency.js')->dependenciesAndSelf()->filtered();
     }
 

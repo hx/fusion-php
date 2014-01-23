@@ -1,10 +1,10 @@
 <?php
 
-namespace Fusion\Asset\StyleSheet;
+namespace Hx\Fusion\Asset\StyleSheet;
 
-use Fusion\Asset\StyleSheet;
-use Fusion\Exceptions;
-use Fusion\Process;
+use Hx\Fusion\Asset\StyleSheet;
+use Hx\Fusion\Exceptions;
+use Hx\Fusion\Process;
 
 class Less extends StyleSheet {
 
