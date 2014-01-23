@@ -16,7 +16,7 @@ class JavaScript extends Asset {
 
     protected function compress() {
         try {
-            return Process::uglifyjs(['-mc', '--define', 'warnings=false'], parent::compress());
+            return Process::uglifyjs(['-mc', 'warnings=false'], parent::compress());
         } catch(Exceptions\ProcessFailure $e) {
             throw new Exceptions\SyntaxError($this, $e->error);
         }
