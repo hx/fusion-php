@@ -29,6 +29,11 @@ interface IAsset {
      * @return AssetCollection
      */
     public function dependencies();
+
+    /**
+     * @return int
+     */
+    public function mtime();
 }
 
 class Asset implements IAsset {
@@ -158,5 +163,14 @@ class Asset implements IAsset {
      */
     public function contentType() {
         return 'application/octet-stream';
+    }
+
+    /**
+     * @return int
+     */
+    public function mtime() {
+        return $this->exists()
+            ? filemtime($this->absolutePath())
+            : null;
     }
 }

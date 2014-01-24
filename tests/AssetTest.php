@@ -16,6 +16,7 @@ class AssetTest extends Fusion\TestCase {
         $this->assertContains('have dependencies', $all->compressed());
         $this->assertContains('we got there', $all->raw());
         $this->assertSame('application/javascript', $file->contentType());
+        $this->assertSame(filemtime(__DIR__ . '/fixtures/has_dependencies.coffee'), $file->mtime());
     }
 
 }

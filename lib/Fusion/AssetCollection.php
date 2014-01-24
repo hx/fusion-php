@@ -100,4 +100,11 @@ class AssetCollection extends \ArrayObject implements IAsset {
         }
         return $this->assetType;
     }
+
+    /**
+     * @return int
+     */
+    public function mtime() {
+        return max($this->map('mtime'));
+    }
 }

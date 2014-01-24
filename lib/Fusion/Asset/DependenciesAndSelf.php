@@ -107,4 +107,10 @@ class DependenciesAndSelf implements IAsset, \Iterator, \Countable, \ArrayAccess
         return count($this->dependencies()) + 1;
     }
 
+    /**
+     * @return int
+     */
+    public function mtime() {
+        return max($this->owner->mtime(), $this->dependencies()->mtime());
+    }
 }
