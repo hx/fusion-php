@@ -8,6 +8,7 @@ use Hx\Fusion\Exceptions;
  * @method static string coffee(array $args = [], $stdin = null)
  * @method static string sass(array $args = [], $stdin = null)
  * @method static string lessc(array $args = [], $stdin = null)
+ * @method static string cleancss(array $args = [], $stdin = null)
  */
 class Process {
 

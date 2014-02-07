@@ -45,4 +45,24 @@ class FilterTest extends Fusion\TestCase {
         $file->compressed();
     }
 
+    /**
+     * @param bool $fallbackToSass
+     * @param string $expected
+     * @dataProvider dataCleanCss
+     */
+    public function testCleanCss($fallbackToSass, $expected) {
+        if($fallbackToSass) {
+            Fusion\Process::$paths['cleancss'] = 'gilquebvalkjsdn';
+        }
+        $file = Fusion::file('style.css', __DIR__ . '/fixtures');
+        $compressed = $file->compressed();
+        $this->assertContains($expected, $compressed);
+    }
+    public function dataCleanCss() {
+        return [
+            [false, '0 1px'],
+            [true, '0px 1px']
+        ];
+    }
+
 }
