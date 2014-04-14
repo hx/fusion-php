@@ -12,13 +12,13 @@ trait HasDependencies {
 
     /**
      * @param null|array $ancestors Used internally to prevent circular dependency
-     * @throws \Fusion\Exceptions\MissingDependency
-     * @throws \Fusion\Exceptions\CircularDependency
+     * @throws \Hx\Fusion\Exceptions\CircularDependency
+     * @throws \Hx\Fusion\Exceptions\MissingDependency
      * @return AssetCollection
      */
     public function dependencies($ancestors = []) {
         /**
-         * @type \Fusion\Asset|self $this
+         * @type \Hx\Fusion\Asset|self $this
          */
 
         foreach($ancestors as $d) {
@@ -60,6 +60,12 @@ trait HasDependencies {
             $baseDirLength = strlen($this->baseDir()) + 1;
             $ancestorsAndSelf = array_merge($ancestors, [$this]);
             foreach(array_unique($paths) as $i) {
+
+                // If the file has no extension, use the requiring file's extension
+                if(preg_match('`(/|^)[^.]+$`', $i)) {
+                    $i .= '.' . $this->extension();
+                }
+
                 if(is_file($i)) {
                     $i = realpath($i);
                     $file = Fusion::file(substr($i, $baseDirLength), $this->baseDir());

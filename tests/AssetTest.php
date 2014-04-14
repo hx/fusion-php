@@ -19,4 +19,10 @@ class AssetTest extends Fusion\TestCase {
         $this->assertSame(filemtime(__DIR__ . '/fixtures/has_dependencies.coffee'), $file->mtime());
     }
 
+    public function testExtensionlessDependency() {
+        $file = Fusion::file('extensionless_dependency.js', __DIR__ . '/fixtures');
+        $filtered = $file->dependenciesAndSelf()->filtered();
+        $this->assertContains('alert', $filtered);
+    }
+
 }
