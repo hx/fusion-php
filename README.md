@@ -30,19 +30,19 @@ Generally, you can use either style of comments, as long as the format supports 
 
 ```php
 <?php
-$file = Fusion::file('/path/to/file.scss');
+$file = Hx\Fusion::file('/path/to/file.scss');
 ```
 
-This code assigns a new instance of `Fusion\Asset\StyleSheet\Sass` to `$file`, which is a subclass of `Fusion\Asset`. Subclasses are selected based on file extensions.
+This code assigns a new instance of `Hx\Fusion\Asset\StyleSheet\Sass` to `$file`, which is a subclass of `Hx\Fusion\Asset`. Subclasses are selected based on file extensions.
 
 To specify a base directory, include a second argument. Dependency paths will be evaluated relative to the given base path. The file's directory is used as a base if this argument is omitted.
 
 ```php
 <?php
-$file = Fusion::file('file.scss', '/path/to'); // Equivalent to previous example
+$file = Hx\Fusion::file('file.scss', '/path/to'); // Equivalent to previous example
 ```
 
-The `Fusion\Asset` class gives you several basic methods to retrieve information about your file:
+The `Hx\Fusion\Asset` class gives you several basic methods to retrieve information about your file:
 
 ```php
 <?php
@@ -80,7 +80,7 @@ echo $file->compressed();
 
 ### Collections
 
-The above methods are also available on the `Fusion\AssetCollection` class, which represents ordered collections of assets.
+The above methods are also available on the `Hx\Fusion\AssetCollection` class, which represents ordered collections of assets.
 
 Consider these three files `a.coffee`, `b.coffee` and `c.coffee`:
 
@@ -104,16 +104,16 @@ We could create a collection a couple of ways:
 <?php
 
 // Manually
-$files = new Fusion\AssetCollection([
-    Fusion::file('a.coffee'),
-    Fusion::file('b.coffee'),
-    Fusion::file('c.coffee')
+$files = new Hx\Fusion\AssetCollection([
+    Hx\Fusion::file('a.coffee'),
+    Hx\Fusion::file('b.coffee'),
+    Hx\Fusion::file('c.coffee')
 ]);
 
 // Using the glob() method
-$files = Fusion::glob('*.coffee');
+$files = Hx\Fusion::glob('*.coffee');
 
-// $files is an instance of Fusion\AssetCollection, which extends ArrayObject
+// $files is an instance of Hx\Fusion\AssetCollection, which extends ArrayObject
 echo count($files);     // 3
 echo $files[0]->path(); // a.coffee
 ```
@@ -122,7 +122,7 @@ To get collections of dependencies:
 ```php
 <?php
 
-$file = Fusion::file('c.coffee');
+$file = Hx\Fusion::file('c.coffee');
 
 $deps = $file->dependencies();
 
@@ -151,7 +151,7 @@ alert('File A');alert('File B');alert('File C');
 
 ## Exceptions
 
-Fusion exceptions live in the `Fusion\Exceptions` namespace, and are subclasses of `Fusion\Exception`.
+Fusion exceptions live in the `Hx\Fusion\Exceptions` namespace, and are subclasses of `Hx\Fusion\Exception`.
 
 ### Processing files
 
